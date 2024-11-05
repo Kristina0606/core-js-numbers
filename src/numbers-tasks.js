@@ -160,8 +160,9 @@ function parseNumberFromString(value) {
  *   3,3,3   => 5.196152422706632
  *   1,2,3   => 3.741657386773941
  */
-function getParallelepipedDiagonal(/* a, b, c */) {
-  throw new Error('Not implemented');
+function getParallelepipedDiagonal(a, b, c) {
+  const d = Math.sqrt(a ** 2 + b ** 2 + c ** 2);
+  return d;
 }
 
 /**
@@ -181,8 +182,8 @@ function getParallelepipedDiagonal(/* a, b, c */) {
  *   1678, 2  => 1700
  *   1678, 3  => 2000
  */
-function roundToPowerOfTen(/* num, pow */) {
-  throw new Error('Not implemented');
+function roundToPowerOfTen(num, pow) {
+  return Math.round(num / 10 ** pow) * 10 ** pow;
 }
 
 /**
@@ -202,8 +203,22 @@ function roundToPowerOfTen(/* num, pow */) {
  *   16 => false
  *   17 => true
  */
-function isPrime(/* n */) {
-  throw new Error('Not implemented');
+function isPrime(n) {
+  if (n <= 1) {
+    return false;
+  }
+  if (n === 2) {
+    return true;
+  }
+  if (n % 2 === 0) {
+    return false;
+  }
+  for (let i = 3; i <= Math.sqrt(n); i += 2) {
+    if (n % i === 0) {
+      return false;
+    }
+  }
+  return true;
 }
 
 /**
@@ -221,8 +236,11 @@ function isPrime(/* n */) {
  *   toNumber(42, 0) => 42
  *   toNumber(new Number(42), 0) => 42
  */
-function toNumber(/* value, def */) {
-  throw new Error('Not implemented');
+function toNumber(value, def) {
+  if (Number.isNaN(Number(value))) {
+    return def;
+  }
+  return Number(value);
 }
 
 /**
@@ -236,8 +254,8 @@ function toNumber(/* value, def */) {
  *   -2 => -8
  *   0  => 0
  */
-function getCube(/* num */) {
-  throw new Error('Not implemented');
+function getCube(num) {
+  return num ** 3;
 }
 
 /**
@@ -253,8 +271,20 @@ function getCube(/* num */) {
  *   3  => 2
  *   10 => 55
  */
-function getFibonacciNumber(/* index */) {
-  throw new Error('Not implemented');
+function getFibonacciNumber(index) {
+  const arr = [0, 1];
+  let index1 = index;
+  if (index === 0) {
+    return 0;
+  }
+  if (index === 1) {
+    return 1;
+  }
+  while (index1 > 1) {
+    arr.push(arr[arr.length - 1] + arr[arr.length - 2]);
+    index1 -= 1;
+  }
+  return arr[arr.length - 1];
 }
 
 /**
